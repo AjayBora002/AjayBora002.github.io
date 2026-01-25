@@ -86,20 +86,35 @@ body {
     color: var(--text-main);
 }
 
-/* --- HERO SECTION --- */
+/* --- HERO SECTION (UPDATED FOR IMAGE) --- */
 .hero {
-    min-height: 90vh;
+    min-height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 0 20px;
+    padding: 0 5%;
     background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 40%);
 }
 
+/* Container for Text + Image */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Text Side */
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
 .hero h1 {
-    font-size: 4rem;
-    line-height: 1.1;
+    font-size: 3.5rem;
+    line-height: 1.2;
     margin-bottom: 1rem;
     font-weight: 700;
 }
@@ -114,14 +129,42 @@ body {
     font-size: 1.5rem;
     color: var(--text-muted);
     font-weight: 400;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Image Side */
+.hero-image-container {
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.profile-pic {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+    animation: float 6s ease-in-out infinite;
+    background: #1e293b; /* Fallback color */
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
 
 /* BUTTONS */
+.hero-btns {
+    margin-top: 2rem;
+}
+
 .hero-btns .btn {
     display: inline-block;
     padding: 14px 35px;
-    margin: 10px;
+    margin-right: 15px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
@@ -133,6 +176,7 @@ body {
     color: white;
     box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
     border: none;
+    cursor: pointer;
 }
 
 .primary-btn:hover {
@@ -340,8 +384,37 @@ footer {
         transition: opacity 0.4s ease-in-out 0.2s;
     }
 
-    .hero h1 { font-size: 2.8rem; }
-    .container { padding: 4rem 5%; }
+    /* Stack elements vertically on mobile */
+    .hero-container {
+        flex-direction: column-reverse; /* Puts image on top of text */
+        text-align: center;
+        gap: 30px;
+    }
     
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero h1 { font-size: 2.5rem; }
+    
+    .profile-pic {
+        width: 220px; /* Smaller image on mobile */
+        height: 220px;
+    }
+
+    .container { padding: 4rem 5%; }
     .edu-card { flex-direction: column; text-align: center; align-items: center; }
+    
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-btns .btn {
+        margin: 5px 0;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
 }

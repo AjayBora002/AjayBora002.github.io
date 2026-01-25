@@ -31,15 +31,31 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION WITH IMAGE -->
     <header id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Ajay Bora</span></h1>
-            <h2>B.Tech Student (AI/ML) & Data Science Enthusiast</h2>
-            <p>Executing end-to-end data workflows with Python, SQL, and Scikit-Learn.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn primary-btn">View Projects</a>
-                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+        <div class="hero-container">
+            
+            <!-- 1. Text Content -->
+            <div class="hero-text">
+                <h1>Hi, I'm <span class="highlight">Ajay Bora</span></h1>
+                <h2>B.Tech Student (AI/ML) & Data Science Enthusiast</h2>
+                <p>Executing end-to-end data workflows with Python, SQL, and Scikit-Learn.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn primary-btn">View Projects</a>
+                    <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                </div>
             </div>
+
+            <!-- 2. Image Content -->
+            <div class="hero-image-container">
+                <!-- IMPORTANT: Ensure 'profile.jpg' is inside your 'assets' folder -->
+                <img src="assets/profile.jpg" 
+                     alt="Ajay Bora" 
+                     class="profile-pic"
+                     onerror="this.style.display='none'"> 
+                     <!-- The onerror line hides the broken image icon if you haven't added the photo yet -->
+            </div>
+
         </div>
     </header>
 
@@ -47,12 +63,7 @@
         <h2 class="section-title">Professional Summary</h2>
         <div class="about-content">
             <p>
-                I am a second-year <strong>Bachelor of Technology</strong> student focused on <strong>Computer Science (AI/ML)</strong> at Amrapali University. 
-                I possess foundational skills in <strong>C, Java, Python, and SQL</strong>. 
-                My expertise lies in executing data workflows using libraries like <strong>pandas, numpy, and scikit-learn</strong>, with a strong ability to document work via Jupyter Notebooks.
-            </p>
-            <p>
-                I am currently seeking a <strong>Data Science role</strong> to apply my skills in data manipulation, visualization (Tableau), and predictive modeling.
+                Second-year <strong>B.Tech student specializing in AI/ML</strong> with a passion for building intelligent systems. I combine strong algorithmic foundations in <strong>Data Structures (DSA)</strong> with practical expertise in <strong>Python, SQL, and Web Development</strong>. From developing Virtual Assistants to completing advanced job simulations in Quantitative Research, I am dedicated to executing end-to-end data workflows and creating robust, scalable applications.
             </p>
         </div>
     </section>
@@ -326,7 +337,7 @@
         <!-- Download Resume Button -->
         <div class="resume-download" style="text-align: center; margin-top: 50px;">
             <!-- Link to PDF resume -->
-            <a href="assets/Ajay_Bora_Resume.pdf" target="_blank" class="btn primary-btn">
+            <a href="assets/Ajay_Bora_Resume.pdf" download="Ajay_Bora_Resume.pdf" class="btn primary-btn">
                 <i class="fas fa-download"></i> Download Resume
             </a>
         </div>
