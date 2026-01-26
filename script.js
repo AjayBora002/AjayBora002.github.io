@@ -3,7 +3,6 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const links = document.querySelectorAll('.nav-links li');
 
-// Toggle Menu on Click
 if (hamburger) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
@@ -11,7 +10,6 @@ if (hamburger) {
     });
 }
 
-// Close menu when a link is clicked (for single page scrolling)
 if (links) {
     links.forEach(link => {
         link.addEventListener('click', () => {
@@ -34,12 +32,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// --- EXTRACURRICULAR ACCORDION (NEW) ---
+// --- EXTRACURRICULAR ACCORDION ---
 const toggleCards = document.querySelectorAll('.toggle-card');
 
 toggleCards.forEach(card => {
-    card.addEventListener('click', () => {
-        // Toggle the 'active' class to show/hide content
-        card.classList.toggle('active');
+    card.addEventListener('click', function(e) {
+        // Prevent the card from toggling if the user clicked a link/button inside it
+        if (e.target.closest('a') || e.target.closest('button')) {
+            return;
+        }
+        
+        // Toggle the 'active' class
+        this.classList.toggle('active');
     });
 });

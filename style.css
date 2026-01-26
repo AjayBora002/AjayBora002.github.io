@@ -86,7 +86,7 @@ body {
     color: var(--text-main);
 }
 
-/* --- HERO SECTION (UPDATED FOR IMAGE) --- */
+/* --- HERO SECTION --- */
 .hero {
     min-height: 95vh;
     display: flex;
@@ -384,9 +384,8 @@ footer {
         transition: opacity 0.4s ease-in-out 0.2s;
     }
 
-    /* Stack elements vertically on mobile */
     .hero-container {
-        flex-direction: column-reverse; /* Puts image on top of text */
+        flex-direction: column-reverse;
         text-align: center;
         gap: 30px;
     }
@@ -398,7 +397,7 @@ footer {
     .hero h1 { font-size: 2.5rem; }
     
     .profile-pic {
-        width: 220px; /* Smaller image on mobile */
+        width: 220px;
         height: 220px;
     }
 
@@ -417,21 +416,34 @@ footer {
         max-width: 250px;
         text-align: center;
     }
+    
+    /* Ensure toggle icon is centered on mobile */
+    .card-header {
+        justify-content: space-between;
+        width: 100%;
+    }
 }
-/* --- TOGGLE / ACCORDION STYLES --- */
 
-/* Make the card look clickable */
+/* ==========================================================================
+   NEW EXTRACURRICULAR ACCORDION & CERTIFICATE STYLES
+   ========================================================================== */
+
+/* --- TOGGLE / ACCORDION CARD --- */
 .toggle-card {
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-/* Ensure the text info takes full width */
-.edu-info {
-    flex: 1; 
+.toggle-card:hover {
+    border-color: var(--accent);
 }
 
-/* Header layout for Title + Icon */
+.edu-info {
+    flex: 1; 
+    width: 100%; /* Ensures content takes full width */
+}
+
+/* HEADER: Title + Arrow */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -439,19 +451,20 @@ footer {
     width: 100%;
 }
 
-/* The arrow icon */
+/* ARROW ICON */
 .toggle-icon {
     font-size: 1.2rem;
     color: var(--accent);
     transition: transform 0.3s ease;
+    margin-left: 10px;
 }
 
-/* Rotate arrow when card is open */
+/* Rotate arrow when active */
 .toggle-card.active .toggle-icon {
     transform: rotate(180deg);
 }
 
-/* HIDDEN CONTENT (The details + Image) */
+/* HIDDEN CONTENT (Details, Image, Button) */
 .extra-content {
     max-height: 0;
     overflow: hidden;
@@ -459,22 +472,70 @@ footer {
     transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.3s ease;
 }
 
-/* REVEAL CONTENT (When 'active' class is added) */
+/* REVEAL CONTENT */
 .toggle-card.active .extra-content {
-    max-height: 1000px; /* Arbitrary large height to allow content to fit */
+    max-height: 1200px; /* Large enough to fit content */
     opacity: 1;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Certificate Image Style */
+/* --- CERTIFICATE BUTTONS (PDF & LINKS) --- */
+.cert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cert-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.cert-btn i {
+    font-size: 1.1rem;
+    margin-bottom: 0; /* Override generic icon margin */
+    background: none;
+    -webkit-text-fill-color: initial; /* Remove gradient from icon */
+}
+
+/* Google Profile Button - Specific Color */
+.google-btn {
+    border-color: #34a853; /* Google Green */
+    color: #34a853;
+}
+
+.google-btn:hover {
+    background: #34a853;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
+}
+
+/* --- CERTIFICATE IMAGE (Kaggle) --- */
 .cert-img {
+    display: block;
     width: 100%;
     max-width: 450px;
     height: auto;
-    margin-top: 15px;
+    margin-top: 20px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.cert-img:hover {
+    transform: scale(1.02);
 }
