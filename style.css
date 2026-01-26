@@ -418,3 +418,63 @@ footer {
         text-align: center;
     }
 }
+/* --- TOGGLE / ACCORDION STYLES --- */
+
+/* Make the card look clickable */
+.toggle-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Ensure the text info takes full width */
+.edu-info {
+    flex: 1; 
+}
+
+/* Header layout for Title + Icon */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* The arrow icon */
+.toggle-icon {
+    font-size: 1.2rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when card is open */
+.toggle-card.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* HIDDEN CONTENT (The details + Image) */
+.extra-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.3s ease;
+}
+
+/* REVEAL CONTENT (When 'active' class is added) */
+.toggle-card.active .extra-content {
+    max-height: 1000px; /* Arbitrary large height to allow content to fit */
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Certificate Image Style */
+.cert-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}

@@ -1,4 +1,4 @@
-// Select DOM items
+// --- NAVIGATION & HAMBURGER MENU ---
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const links = document.querySelectorAll('.nav-links li');
@@ -21,7 +21,7 @@ if (links) {
     });
 }
 
-// Smooth Scrolling (Standard)
+// --- SMOOTH SCROLLING ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -31,5 +31,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
         }
+    });
+});
+
+// --- EXTRACURRICULAR ACCORDION (NEW) ---
+const toggleCards = document.querySelectorAll('.toggle-card');
+
+toggleCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Toggle the 'active' class to show/hide content
+        card.classList.toggle('active');
     });
 });
