@@ -1,3 +1,8 @@
+// --- FIX: PREVENT HORIZONTAL SCROLL ---
+// This prevents the "swiping to whitespace" issue on mobile
+document.documentElement.style.overflowX = 'hidden';
+document.body.style.overflowX = 'hidden';
+
 // --- NAVIGATION & HAMBURGER MENU ---
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');

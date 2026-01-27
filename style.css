@@ -18,9 +18,12 @@
     scroll-behavior: smooth;
 }
 
+/* --- FIX 1: Strict Horizontal Overflow Prevention --- */
 html, body {
     width: 100%;
-    overflow-x: hidden; /* CRITICAL FIX for horizontal scroll */
+    max-width: 100vw;       /* Forces the page to never exceed screen width */
+    overflow-x: hidden;     /* Hides any accidental overflow */
+    position: relative;     /* Stabilizes positioning context */
 }
 
 body {
@@ -238,7 +241,7 @@ body {
     margin: 0 auto;
 }
 
-/* UPDATED TITLE CENTERING (Fixes horizontal overflow) */
+/* UPDATED TITLE CENTERING */
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 4rem;
@@ -270,7 +273,9 @@ body {
     gap: 30px;
 }
 
-.projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+/* --- FIX 2: Reduced Min-Width for Mobile Safety --- */
+/* Changed 320px to 290px so cards fit within small mobile screens with padding */
+.projects-grid { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
 .skills-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 
 /* Common Card Style */
@@ -507,30 +512,42 @@ footer {
         display: block;
     }
 
+    /* --- FIX 3: Visibility Toggling --- */
+    /* This ensures the menu is completely removed from the layout when closed */
     .nav-links {
         position: fixed;
         top: 0;
         right: 0;
         height: 100vh;
-        width: 75%; /* Slightly wider for better touch targets */
-        background: rgba(15, 23, 42, 0.98); /* Solid dark background */
+        width: 75%; 
+        background: rgba(15, 23, 42, 0.98); 
         backdrop-filter: blur(15px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        
+        /* Hides the element so it doesn't cause overflow */
         transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility: hidden; 
+        
+        /* Delay visibility toggle so animation can finish before hiding */
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.4s;
+        
         box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-        z-index: 2000; /* Behind hamburger but above content */
+        z-index: 2000; 
     }
 
     .nav-links.active {
         transform: translateX(0%);
+        visibility: visible;
+        
+        /* Remove delay when showing */
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s;
     }
 
     .nav-links li {
         opacity: 0;
-        margin: 25px 0; /* More spacing for thumbs */
+        margin: 25px 0; 
     }
     
     .nav-links.active li {
