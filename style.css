@@ -18,11 +18,15 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* CRITICAL FIX for horizontal scroll */
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.7;
-    overflow-x: hidden;
 }
 
 /* --- NAVIGATION (GLASS EFFECT) --- */
@@ -234,14 +238,16 @@ body {
     margin: 0 auto;
 }
 
+/* UPDATED TITLE CENTERING (Fixes horizontal overflow) */
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 4rem;
     text-align: center;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-title::after {
@@ -472,7 +478,7 @@ footer {
     background: #34a853;
     color: #fff;
     box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
-        }
+}
 
 .cert-img {
     display: block;
