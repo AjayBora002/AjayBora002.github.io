@@ -3,13 +3,17 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const links = document.querySelectorAll('.nav-links li');
 
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('toggle');
-    });
+// Toggle Menu Function
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('toggle');
 }
 
+if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+}
+
+// Close menu when a link is clicked
 if (links) {
     links.forEach(link => {
         link.addEventListener('click', () => {
@@ -18,6 +22,18 @@ if (links) {
         });
     });
 }
+
+// --- CLICK OUTSIDE TO CLOSE MENU (Mobile) ---
+document.addEventListener('click', (e) => {
+    // Check if menu is open
+    if (navLinks.classList.contains('active')) {
+        // If click is NOT inside nav-links AND NOT on the hamburger button
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('toggle');
+        }
+    }
+});
 
 // --- SMOOTH SCROLLING ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

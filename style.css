@@ -79,11 +79,43 @@ body {
     width: 100%;
 }
 
+/* HAMBURGER MENU STYLES */
 .hamburger {
     display: none; /* Hidden on desktop */
     cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--text-main);
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 2001; /* Above mobile menu */
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-main);
+    position: absolute;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+/* Hamburger Animation when Active */
+.hamburger.toggle span:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+}
+
+.hamburger.toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.toggle span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-45deg);
 }
 
 /* --- HERO SECTION --- */
@@ -348,10 +380,6 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* ==========================================================================
-   NEW EXTRACURRICULAR ACCORDION & CERTIFICATE STYLES
-   ========================================================================== */
-
 /* --- TOGGLE / ACCORDION CARD --- */
 .toggle-card {
     cursor: pointer;
@@ -364,7 +392,7 @@ footer {
 
 .edu-info {
     flex: 1; 
-    width: 100%; /* Ensures content takes full width */
+    width: 100%;
 }
 
 /* HEADER: Title + Arrow */
@@ -398,7 +426,7 @@ footer {
 
 /* REVEAL CONTENT */
 .toggle-card.active .extra-content {
-    max-height: 1200px; /* Large enough to fit content */
+    max-height: 1200px;
     opacity: 1;
     margin-top: 20px;
     padding-top: 20px;
@@ -430,14 +458,13 @@ footer {
 
 .cert-btn i {
     font-size: 1.1rem;
-    margin-bottom: 0; /* Override generic icon margin */
+    margin-bottom: 0;
     background: none;
-    -webkit-text-fill-color: initial; /* Remove gradient from icon */
+    -webkit-text-fill-color: initial;
 }
 
-/* Google Profile Button - Specific Color */
 .google-btn {
-    border-color: #34a853; /* Google Green */
+    border-color: #34a853;
     color: #34a853;
 }
 
@@ -445,9 +472,8 @@ footer {
     background: #34a853;
     color: #fff;
     box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
-}
+        }
 
-/* --- CERTIFICATE IMAGE (Kaggle) --- */
 .cert-img {
     display: block;
     width: 100%;
@@ -473,7 +499,6 @@ footer {
     /* 1. Navbar & Menu */
     .hamburger {
         display: block;
-        z-index: 2001;
     }
 
     .nav-links {
@@ -481,8 +506,8 @@ footer {
         top: 0;
         right: 0;
         height: 100vh;
-        width: 75%;
-        background: rgba(15, 23, 42, 0.98);
+        width: 75%; /* Slightly wider for better touch targets */
+        background: rgba(15, 23, 42, 0.98); /* Solid dark background */
         backdrop-filter: blur(15px);
         flex-direction: column;
         align-items: center;
@@ -490,6 +515,7 @@ footer {
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        z-index: 2000; /* Behind hamburger but above content */
     }
 
     .nav-links.active {
@@ -498,7 +524,7 @@ footer {
 
     .nav-links li {
         opacity: 0;
-        margin: 25px 0;
+        margin: 25px 0; /* More spacing for thumbs */
     }
     
     .nav-links.active li {
@@ -508,10 +534,10 @@ footer {
 
     /* 2. Hero Section */
     .hero-container {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse; /* Image on top, text below */
         text-align: center;
-        gap: 20px;
-        padding-top: 80px; 
+        gap: 30px;
+        padding-top: 40px; 
     }
     
     .hero-text {
@@ -529,8 +555,8 @@ footer {
     }
 
     .profile-pic {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
         margin-bottom: 10px;
     }
 
@@ -545,7 +571,7 @@ footer {
         width: 100%;
     }
     
-    /* FIX: Force single column on mobile */
+    /* FIX: Force single column on small screens */
     .projects-grid, .skills-grid { 
         grid-template-columns: 1fr;
     }
@@ -569,7 +595,7 @@ footer {
     }
     
     .timeline-item::before {
-        left: -31px;
+        left: -31px; /* Re-align dot with new padding */
     }
 
     /* 5. Buttons & Headers */
@@ -592,7 +618,7 @@ footer {
     }
 }
 
-/* Small phones */
+/* Extra Small Devices */
 @media (max-width: 380px) {
     .hero h1 { font-size: 1.8rem; }
     .project-card, .edu-card { padding: 1.5rem; }
