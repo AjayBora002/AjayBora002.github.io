@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTimelineAnimation();
     initProjectPreview();
     initChatbot();
+    initClickableCards();
     initLenis();
     initGSAPAnimations();
 });
@@ -148,10 +149,7 @@ function initGSAPAnimations() {
     gsap.set('.profile-wrapper', { scale: 0.9, opacity: 0 });
     
     tl.to('header', { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.2 })
-      .to('.hero-content h1', { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-      .to('.hero-content .subtitle', { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-      .to('.hero-description', { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-      .to('.hero-buttons', { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+      .to('.hero-content > *', { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.15 }, '-=0.4')
       .to('.profile-wrapper', { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)' }, '-=0.6');
 
     // 2. Section Titles Scroll Reveal
@@ -906,6 +904,22 @@ function initChatbot() {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             sendMessage();
+        }
+    });
+}
+
+// ── CLICKABLE CERT CARDS ──────────────────────────────
+function initClickableCards() {
+    const certCards = document.querySelectorAll('.cert-card');
+    certCards.forEach(card => {
+        const link = card.querySelector('.cert-link');
+        if (link && link.href) {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.cert-link')) {
+                    window.open(link.href, link.target || '_blank');
+                }
+            });
         }
     });
 }

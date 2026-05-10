@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajay Bora — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #1a1a2e;
+    --accent2: #4f46e5;
+    --text: #1e1e2e;
+    --muted: #555;
+    --light: #f4f4f8;
+    --border: #dde1ea;
+    --tag-bg: #eef0fb;
+    --tag-color: #4f46e5;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #e8eaf0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 16px;
+    color: var(--text);
+  }
+
+  .page {
+    background: #fff;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 12mm 15mm 10mm;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 4px;
+    gap: 12px;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+  }
+  .profile-photo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid var(--accent2);
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(79,70,229,0.2);
+  }
+  .header-name h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .header-name .tagline {
+    font-size: 12px;
+    color: var(--accent2);
+    font-weight: 600;
+    margin-top: 3px;
+    letter-spacing: 0.2px;
+  }
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+    font-size: 9px;
+    color: var(--muted);
+    min-width: 200px;
+    padding-left: 12px;
+  }
+  .contact-grid a {
+    color: var(--accent2);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-end;
+  }
+  .contact-row .dot {
+    width: 4px; height: 4px;
+    background: var(--accent2);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 8px; }
+  .section-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── PROFILE ── */
+  .profile-text {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── TWO-COLUMN LAYOUT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+
+  /* ── EXPERIENCE / EDUCATION ── */
+  .entry { margin-bottom: 6px; }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .entry-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .entry-date {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+  .entry-company {
+    font-size: 10.5px;
+    color: var(--accent2);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .entry ul {
+    padding-left: 12px;
+    margin-top: 4px;
+  }
+  .entry ul li {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 2px;
+  }
+
+  /* ── PROJECTS ── */
+  .project-entry { margin-bottom: 4px; }
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .project-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .project-tech {
+    font-size: 9.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .project-link {
+    font-size: 9px;
+    color: #1d4ed8;
+    text-decoration: underline;
+    margin-left: auto;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .project-desc {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 2px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: flex; flex-direction: column; gap: 5px; }
+  .skill-row { display: flex; gap: 8px; align-items: baseline; }
+  .skill-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text);
+    min-width: 95px;
+    flex-shrink: 0;
+  }
+  .skill-value {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── HACKATHONS & CERTS ── */
+  .inline-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .badge {
+    background: var(--light);
+    border: 1px solid var(--border);
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--text);
+    padding: 4px 11px;
+    border-radius: 99px;
+  }
+  .badge-accent {
+    background: var(--tag-bg);
+    border-color: #c7d2fe;
+    color: var(--accent2);
+  }
+
+  /* ── OPEN SOURCE ── */
+  .os-entry { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .os-name { font-size: 11px; font-weight: 700; color: var(--text); }
+  .os-org { font-size: 10px; color: var(--accent2); font-weight: 600; }
+  .os-desc { font-size: 10.5px; color: var(--muted); line-height: 1.55; }
+
+  /* ── PRINT ── */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page {
+      box-shadow: none;
+      border-radius: 0;
+      padding: 10mm 14mm 8mm;
+      width: 100%;
+      min-height: auto;
+      max-height: none;
+      overflow: visible;
+    }
+    .print-btn { display: none; }
+  }
+  .print-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--accent2);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 99px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(79,70,229,0.4);
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    z-index: 100;
+  }
+  .print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(79,70,229,0.5); }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <img src="profile.jpg" alt="Ajay Bora" class="profile-photo">
+      <div class="header-name">
+        <h1>AJAY BORA</h1>
+        <div class="tagline">Data Scientist &amp; AI/ML Engineer</div>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-row"><span class="dot"></span> boraajay26@gmail.com</div>
+      <div class="contact-row"><span class="dot"></span> +91 8630803571</div>
+      <div class="contact-row"><span class="dot"></span> Haldwani, Uttarakhand</div>
+      <div class="contact-row"><span class="dot"></span>
+        <a href="https://linkedin.com/in/ajaybora002">linkedin/ajaybora002</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/AjayBora002">github/AjayBora002</a>
+      </div>
+      <div class="contact-row"><span class="dot"></span>
+        <a href="https://ajay-bora-portfolio.vercel.app">ajay-bora-portfolio.vercel.app</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="section">
+    <div class="section-title">Profile</div>
+    <p class="profile-text">
+      AI/ML Engineer specializing in Generative AI systems, scalable ETL data pipelines, and predictive modeling. Interned at Infosys building large-scale climate analytics, and contributed merged PRs to pgmpy (GSoC). Pursuing B.Tech in CSE (AI/ML) and seeking roles where intelligent systems solve real-world problems.
+    </p>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">B.Tech &mdash; Computer Science &amp; Engineering (AI/ML)</span>
+        <span class="entry-date">Expected Aug 2028</span>
+      </div>
+      <div class="entry-company">Amrapali University, Haldwani</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Data Visualization Intern</span>
+        <span class="entry-date">Feb 2026 &ndash; Apr 2026</span>
+      </div>
+      <div class="entry-company">Infosys</div>
+      <ul>
+        <li>Built <strong>Climate Scope</strong> &mdash; automated ETL pipeline (Python/Pandas) ingesting 132K+ weather records; interactive Streamlit/Plotly dashboard with choropleth maps across 3,000+ locations.</li>
+        <li>Conducted rigorous statistical analysis identifying 99th-percentile extreme weather anomalies, seasonal trends, and variable correlations across large-scale global datasets.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Data Science with AI/ML Intern</span>
+        <span class="entry-date">Jan 2025 &ndash; Mar 2025</span>
+      </div>
+      <div class="entry-company">YBI Foundation</div>
+      <ul>
+        <li>Built <strong>Weather Prediction Model</strong> &mdash; regression-based ML model achieving 92% R&sup2; accuracy on 10,000+ historical records; optimized preprocessing pipelines cutting training time by 20%.</li>
+        <li>Applied Scikit-Learn and Matplotlib to visualize feature importance and evaluate model metrics including MAE and RMSE for continuous improvement.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Student Ambassador</span>
+        <span class="entry-date">2025 &ndash; Present</span>
+      </div>
+      <div class="entry-company">Google</div>
+      <ul>
+        <li>Organized hands-on GenAI workshops and spearheaded Gemini API awareness campaigns for students.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">Python, SQL, Java, C, HTML/CSS</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">ML / AI</span>
+        <span class="skill-value">Scikit-Learn, Pandas, NumPy, TensorFlow, PyTorch, YOLO, LLMs, Generative AI</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Visualization</span>
+        <span class="skill-value">Streamlit, Plotly, Tableau, Power BI, Seaborn, Matplotlib</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cloud &amp; Tools</span>
+        <span class="skill-value">AWS, Google BigQuery, Docker, MySQL, Flask, Git, GitHub</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project-entry">
+      <div class="project-header">
+        <span class="project-name">Poshan Pahad AI</span>
+        <span class="project-tech">GenAI · Docker · NLP · Flask</span>
+        <a class="project-link" href="https://github.com/AjayBora002/Poshan-Pahad">github.com/AjayBora002/Poshan-Pahad</a>
+      </div>
+      <p class="project-desc">Dockerized GenAI chatbot with NLP pipelines providing hyper-localized nutritional &amp; agricultural guidance for hilly regions.</p>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-header">
+        <span class="project-name">VoiceAid</span>
+        <span class="project-tech">React · Firebase · Google Maps API</span>
+        <a class="project-link" href="https://github.com/AjayBora002/voice-aid">github.com/AjayBora002/voice-aid</a>
+      </div>
+      <p class="project-desc">Smart volunteer allocation system for Google Solution Challenge 2026 featuring predictive matching logic and real-time location mapping.</p>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-header">
+        <span class="project-name">Voice Assistant &mdash; Jarvis</span>
+        <span class="project-tech">Python · Gemini API · Pyttsx3 · SpeechRecognition</span>
+        <a class="project-link" href="https://github.com/AjayBora002/Voice-Assistant">github.com/AjayBora002/Voice-Assistant</a>
+      </div>
+      <p class="project-desc">Desktop AI voice assistant powered by Google Gemini API supporting web search, system automation, and multi-turn conversational AI.</p>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-header">
+        <span class="project-name">Anime &amp; Movie Recommendation Systems</span>
+        <span class="project-tech">Python · Scikit-Learn · Cosine Similarity</span>
+        <a class="project-link" href="https://github.com/AjayBora002/anime_recommendation">github.com/AjayBora002/anime_recommendation</a>
+      </div>
+      <p class="project-desc">Content-based &amp; collaborative filtering engines processing tens of thousands of user preferences for personalized anime and movie suggestions.</p>
+    </div>
+  </div>
+
+  <!-- OPEN SOURCE -->
+  <div class="section">
+    <div class="section-title">Open-Source Contributions</div>
+    <div class="os-entry">
+      <span class="os-name">pgmpy</span>
+      <span class="os-org">GSoC Organization · Python Probabilistic Graphical Models</span>
+    </div>
+    <p class="os-desc">2 successfully merged PRs — BibTeX citation migration across full documentation &amp; documentation/metrics improvements to the core library.</p>
+  </div>
+
+  <!-- HACKATHONS -->
+  <div class="section">
+    <div class="section-title">Hackathons &amp; Competitions</div>
+    <div class="inline-list">
+      <span class="badge">🏆 KDSH 2026 &mdash; IIT Kharagpur</span>
+      <span class="badge">🥇 Haxplore CodeFest'26 &mdash; IIT-BHU</span>
+      <span class="badge">🏅 Serve-Smart Hackathon &mdash; IIT-BHU</span>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div class="inline-list">
+      <span class="badge badge-accent">AI Agents Mastery &mdash; DeepLearning.AI</span>
+      <span class="badge badge-accent">Gemini for Data Scientists &amp; Analysts &mdash; Google Cloud</span>
+      <span class="badge badge-accent">Create ML Models with BigQuery ML &mdash; Google Cloud</span>
+      <span class="badge badge-accent">Data Analytics &mdash; Deloitte</span>
+      <span class="badge badge-accent">Software Engineering &mdash; J.P. Morgan</span>
+      <span class="badge badge-accent">Linux Fundamentals &mdash; Red Hat</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -79,7 +79,6 @@ body {
     background-color: var(--bg-base);
     color: var(--text-primary);
     font-family: var(--font-main);
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     line-height: 1.7;
     letter-spacing: -0.01em;
@@ -142,8 +141,8 @@ h1, h2, h3, h4, h5, h6,
 .full-width { width: 100%; }
 
 /* ── HEADER ────────────────────────────────────────── */
-.navbar { padding: 24px 0; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); padding: 12px 12px 12px 24px; border-radius: var(--radius-pill); border: var(--border-subtle); box-shadow: var(--shadow-soft); }
+.navbar { padding: 24px 0; position: sticky; top: 0; z-index: 1000; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 12px 12px 24px; border-radius: var(--radius-pill); border: var(--border-subtle); box-shadow: var(--shadow-soft); }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; color: var(--text-primary); text-decoration: none; letter-spacing: -0.5px; }
 .logo-icon { width: 32px; height: 32px; background: #000; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 0.8rem; }
 .nav-links { display: flex; gap: 32px; }
