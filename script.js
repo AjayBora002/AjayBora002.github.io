@@ -443,7 +443,7 @@ function initTypewriter() {
     const typewriterElement = document.getElementById('typewriter');
     if (!typewriterElement) return;
 
-    const words = ["AI/ML Engineer", "Data Scientist", "Python Developer", "Data Visualization Expert"];
+    const words = ["AI/ML Engineer", "Data Scientist", "Software Developer", "Python Developer", "Data Visualization Expert", "Cloud Infrastructure Developer"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
